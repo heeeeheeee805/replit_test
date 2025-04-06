@@ -1,13 +1,9 @@
 import discord
 from discord.ext import commands
 from discord import app_commands
-import os
-from dotenv import load_dotenv  # .env 파일에서 환경 변수 로드
+import os  # GitHub Actions에서 환경 변수를 불러오기 위해 사용
 
-# .env 파일에서 환경 변수 로드 (Heroku에서는 이 부분이 필요하지 않지만 로컬 개발에 유용)
-load_dotenv()
-
-# 봇 토큰 가져오기 (Heroku 환경 변수나 .env 파일에서 불러옵니다)
+# GitHub Actions에서 환경 변수로 토큰을 불러옴
 TOKEN = os.getenv("DISCORD_BOT_TOKEN")
 
 # 봇 인텐트 설정
