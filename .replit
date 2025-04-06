@@ -11,5 +11,12 @@ language = "python3"
 requiredFiles = [".replit", "replit.nix"]
 
 [deployment]
-run = ["python3", "main.py"]
 deploymentTarget = "cloudrun"
+
+# ✅ Run 명령은 문자열로 써야 함
+run = "python3 main.py"
+
+# ✅ Replit의 Webview는 8080 포트를 사용하므로 이걸 열어둬야 Webview가 뜸
+[[ports]]
+localPort = 8080
+externalPort = 8080
