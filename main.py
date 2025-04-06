@@ -75,6 +75,3 @@ try:
     bot.run(TOKEN)
 except Exception as e:
     print(f"봇 실행 중 오류 발생: {e}")
-
-# 봇 실행
-bot.run(TOKEN)
