@@ -1,16 +1,14 @@
 import discord
 from discord.ext import commands
 from discord import app_commands
-from dotenv import load_dotenv
 import os
-import asyncio
-from keep_alive import keep_alive
+from dotenv import load_dotenv  # .env 파일에서 환경 변수 로드
 
-# .env 파일에서 환경 변수 로드
+# .env 파일에서 환경 변수 로드 (Heroku에서는 이 부분이 필요하지 않지만 로컬 개발에 유용)
 load_dotenv()
 
-# 봇 토큰 가져오기
-TOKEN = os.getenv("DISCORD_TOKEN")
+# 봇 토큰 가져오기 (Heroku 환경 변수나 .env 파일에서 불러옵니다)
+TOKEN = os.getenv("DISCORD_BOT_TOKEN")
 
 # 봇 인텐트 설정
 intents = discord.Intents.default()
@@ -19,12 +17,13 @@ intents.guilds = True
 intents.members = True
 intents.messages = True  # 추가적인 메시지 관련 인텐트 활성화
 
+# 봇 객체 생성
 bot = commands.Bot(command_prefix="!", intents=intents)
 tree = bot.tree
 
 @bot.event
 async def on_ready():
-    print(f"{bot.user} 로 로그인했습니다!")
+    print(f"{bot.user}로 로그인 했어요!")
     try:
         # 슬래시 명령어 동기화
         synced = await tree.sync()
@@ -64,7 +63,7 @@ async def 불판교체(interaction: discord.Interaction, 개수: int):
         # 오류 메시지 전송을 제외하고 처리
         pass
 
-
+# 봇 실행
 try:
     bot.run(TOKEN)
 except Exception as e:
